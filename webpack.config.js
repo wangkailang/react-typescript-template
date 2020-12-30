@@ -12,16 +12,15 @@ module.exports = webpackEnv => {
   const plugins = [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
+      inject: true,
+      template: path.resolve(__dirname, 'public/index.html'),
+      favicon: path.resolve(__dirname, 'public/favicon.ico'),
     }),
   ];
   if (isEnvAnalyze) {
     plugins.push(new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: path.resolve(
-        __dirname,
-        'dist/analyze.html'
-      ),
+      reportFilename: path.resolve(__dirname, 'dist/analyze.html'),
       openAnalyzer: false,
     }))
   }
