@@ -1,0 +1,9 @@
+.App {
+  border: 1px dashed #ccc;
+  padding: 16px;
+}
+
+.App button {
+  cursor: pointer;
+  padding: 4px 12px;
+}

@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = webpackEnv => {
+  const isEnvProduction = webpackEnv.env === 'product';
   const isEnvAnalyze= webpackEnv.env === 'analyze';
+
+  const outputFilename = isEnvProduction ? '[name].[contenthash:8].chunk.js' : '[name].chunk.js';
 
   const plugins = [
     new webpack.HotModuleReplacementPlugin(),
@@ -12,7 +15,7 @@ module.exports = webpackEnv => {
       template: path.resolve(__dirname, 'index.html'),
     }),
   ];
-  if (isEnvProduction) {
+  if (isEnvAnalyze) {
     plugins.push(new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: path.resolve(
@@ -25,9 +28,13 @@ module.exports = webpackEnv => {
 
   return {
     entry: path.resolve(__dirname, 'src/index.tsx'),
-    devtool: 'source-map',
+    devtool: isEnvProduction ? 'source-map' : 'cheap-module-source-map',
     module: {
       rules: [
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
+        },
         {
           test: /\.(js|ts|tsx)$/,
           use: 'babel-loader',
@@ -40,8 +47,12 @@ module.exports = webpackEnv => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js'
+      filename: outputFilename,
+      chunkFilename: outputFilename
     },
+    // optimization: {
+    //   splitChunks: { chunks: 'all' }
+    // },
     plugins,
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
