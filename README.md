@@ -38,11 +38,23 @@ yarn add --save-dev @types/react @types/react-dom
 
 - `@babel/preset-typescript` Babel preset for TypeScript.
 
+### Install Style loader
+
+```bash
+yarn add --save-dev style-loader css-loader
+```
+
 ### Else
 
 ```bash
+# Webpack env
 yarn add --save-dev @types/webpack-env
+
+# Hot loader, Html plugin
 yarn add --save-dev react-hot-loader html-webpack-plugin
+
+# Bundle analyze
+yarn add --save-dev webpack-bundle-analyzer
 ```
 
 ## Configures

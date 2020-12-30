@@ -50,9 +50,6 @@ module.exports = webpackEnv => {
       filename: outputFilename,
       chunkFilename: outputFilename
     },
-    // optimization: {
-    //   splitChunks: { chunks: 'all' }
-    // },
     plugins,
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
