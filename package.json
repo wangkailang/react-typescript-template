@@ -2,7 +2,8 @@
   "name": "react-typescript-template",
   "version": "0.0.1",
   "description": "React typescript template",
-  "main": "public/electron.js",
+  "main": "public/main.js",
+  "homepage": "./",
   "build": {
     "appId": "com.github.rtt",
     "productName": "React Typescript Template",
@@ -28,19 +29,21 @@
       "target": "zip"
     },
     "files": [
-      "build/**/*",
+      "dist/**/*",
+      "public/**/*",
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "assets",
+      "output": "build"
     }
   },
   "scripts": {
     "start": "webpack serve --mode development --env env=dev",
     "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:8080 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
-    "prepack": "yarn build",
-    "pack": "electron-builder -mw",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "electron-builder -mw",
     "build": "webpack --mode production --env env=product",
     "build-analyze": "webpack --mode production --env env=analyze",
     "build-clean": "rm -rf dist"
@@ -59,8 +62,8 @@
   "bugs": {
     "url": "https://github.com/wangkailang/react-typescript-template/issues"
   },
-  "homepage": "https://github.com/wangkailang/react-typescript-template#readme",
   "dependencies": {
+    "electron-is-dev": "^1.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -79,7 +82,6 @@
     "electron": "^11.1.1",
     "electron-builder": "^22.9.1",
     "electron-devtools-installer": "^3.1.1",
-    "electron-is-dev": "^1.2.0",
     "html-webpack-plugin": "^4.5.0",
     "react-hot-loader": "^4.13.0",
     "style-loader": "^2.0.0",

@@ -7,7 +7,7 @@
 yarn dev
 
 # MacOS and Windows Package
-yarn pack
+yarn electron-pack
 ```
 
 ## Install Electron Dependencies
@@ -15,7 +15,8 @@ yarn pack
 ```bash
 yarn add --save-dev electron electron-builder
 yarn add --save-dev concurrently cross-env wait-on
-yarn add --save-dev electron-is-dev electron-devtools-installer
+yarn add electron-is-dev
+yarn add --save-dev electron-devtools-installer
 ```
 
 
