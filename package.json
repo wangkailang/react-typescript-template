@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode development --env env=dev",
     "build": "webpack --mode production --env env=product",
-    "build-analyze": "webpack --mode production --env env=analyze",
-    "build-clean": "rm -rf dist"
+    "build-analyze": "webpack --mode production --env env=analyze"
   },
   "repository": {
     "type": "git",

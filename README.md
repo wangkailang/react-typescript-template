@@ -1,5 +1,24 @@
 # React typescript template
 
+## Branch Support
+
+- [main](https://github.com/wangkailang/react-typescript-template/tree/main) Building application Basic React typescript template.
+- [electron](https://github.com/wangkailang/react-typescript-template/tree/electron) Building electron application with React typescript template.
+
+## Usage
+
+```bash
+# Development
+yarn start
+
+# Bundle
+yarn build
+
+# Bundle Analyze
+yarn build-analyze
+# open dist/analyze.html file analyze build size.
+```
+
 ## Install
 
 ### Install React and React DOM
